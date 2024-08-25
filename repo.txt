@@ -1,4 +1,0 @@
-https://github.com/Arminjamali/wordPresstips
-https://github.com/Mohammad-Aali/WP-Useful-Functions
-https://github.com/vanilla-php/benchmark-php
-https://github.com/Arminjamali/Custom-WordPress-Login
