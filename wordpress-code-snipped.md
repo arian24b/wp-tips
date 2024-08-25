@@ -225,7 +225,7 @@ Unfortunately, the reason behind this specific behavior is unknown. It is advisa
 ## Reorder-WooCommerce-Checkout-Fields
 ```php
 add_filter( 'woocommerce_checkout_fields', 'reorder_fields' );
- 
+
 function reorder_fields( $checkout_fields ) {
     $checkout_fields['billing']['billing_first_name']['priority'] = 1;
     $checkout_fields['billing']['billing_last_name']['priority'] = 2;
@@ -304,7 +304,7 @@ session_start();
 
 add_action('init', 'start_session', 1);
 
-  
+
 
 // Get referer URL and save it
 
@@ -324,7 +324,7 @@ session_destroy();
 
 add_action('template_redirect', 'redirect_url');
 
-  
+
 
 // Login redirect
 
@@ -350,7 +350,7 @@ exit();
 
 add_filter('woocommerce_login_redirect', 'login_redirect', 1100, 2);
 
-  
+
 
 // Registration redirect
 
@@ -378,7 +378,7 @@ add_filter('woocommerce_package_rates', 'custom_shipping_method_disable_others',
 function custom_shipping_method_disable_others($rates, $package) {
     // Exception Method
     $Exception_Shipping = 15;
-    
+
     // Check If Free Shipping is Available
     $free_shipping_available = false;
     foreach ($rates as $rate_key => $rate) {
@@ -416,7 +416,7 @@ function  check_national_code($code) {
     $parity = intval(substr($code, 9,1));
     if( ($ret<2 && $ret==$parity) || ($ret>=2 && $ret==11-$parity) )
         return true;
-     
+
     return false;
 }
 
@@ -429,11 +429,11 @@ function add_custom_national_code_field() {
         </div>';
 }
 add_action('woocommerce_after_checkout_billing_form', 'add_custom_national_code_field');
-  
+
 
 function validate_custom_national_code_field() {
     $code = isset($_POST['billing_national_code']) ? sanitize_text_field($_POST['billing_national_code']) : '';
-  
+
     if (!empty($code) && ! check_national_code($code)) {
         wc_add_notice( __( 'کد ملی وارد شده معتبر نمی باشد!' ), 'error' );
     }
@@ -708,8 +708,8 @@ add_action( 'wp', 'my_custom_wc_free_shipping_notice' );
 ```
 ---
 ## ForcedCheckoutLogin
-```php 
-<?php 
+```php
+<?php
 
 // This code is utilized by the Forced Login Page Lock plugin, ensuring that users log in before accessing the checkout page.
 
@@ -770,15 +770,15 @@ add_filter('comment_text', 'disable_comment_links', 20, 1);
 /** Function 1 **/
 
 if (version_compare($GLOBALS['wp_version'], '5.0-beta', '>')) {
-	
+
 	// WP > 5 beta
 	add_filter('use_block_editor_for_post_type', '__return_false', 100);
-	
+
 } else {
-	
+
 	// WP < 5 beta
 	add_filter('gutenberg_can_edit_post_type', '__return_false');
-	
+
 }
 
 ****************************************
@@ -1104,7 +1104,7 @@ function print_html_result(array $data, bool $showServerName = true)
     table tr:hover td {
         background: #f2f2f2;
         background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#f0f0f0));
-        background: -moz-linear-gradient(top,  #f2f2f2,  #f0f0f0);	
+        background: -moz-linear-gradient(top,  #f2f2f2,  #f0f0f0);
     }
     </style>
     </head>
@@ -1225,9 +1225,9 @@ add_filter('login_errors', 'my_custom_error_messages');
 
 function delivery_checkout_field( $checkout ) {
     date_default_timezone_set('Asia/Tehran');
-    
-    $current_time = time(); 
-    $time_now = date( 'H:i:s', $current_time ); 
+
+    $current_time = time();
+    $time_now = date( 'H:i:s', $current_time );
     $is_before_noon = date( 'H', $current_time ) < 12;
 
     // تابع برای بررسی تعطیلی با استفاده از API
@@ -1295,9 +1295,9 @@ function delivery_checkout_field( $checkout ) {
         echo '</div>';
     }
 
-    echo '</div>'; 
-    echo '</div>'; 
-    echo '</div>'; 
+    echo '</div>';
+    echo '</div>';
+    echo '</div>';
 }
 
 add_action( 'woocommerce_after_order_notes', 'delivery_checkout_field' );
@@ -1351,19 +1351,19 @@ function delivery_checkout_script() {
             document.addEventListener("DOMContentLoaded", function() {
                 var tabLinks = document.querySelectorAll(".nav-tabs li a");
                 var tabPanes = document.querySelectorAll(".tab-content .tab-pane");
-    
+
                 tabLinks.forEach(function(link) {
                     link.addEventListener("click", function(e) {
                         e.preventDefault();
-    
+
                         tabLinks.forEach(function(item) {
                             item.parentElement.classList.remove("active");
                         });
-    
+
                         tabPanes.forEach(function(pane) {
                             pane.classList.remove("active");
                         });
-    
+
                         this.parentElement.classList.add("active");
                         document.querySelector(this.getAttribute("href")).classList.add("active");
                     });
@@ -1373,7 +1373,7 @@ function delivery_checkout_script() {
                 function toggleCustomField() {
                     var shippingMethod = $('input[name^="shipping_method"]:checked').val();
                   // جایگزین flat_rate:3 با آی‌دی روش ارسال پیکی خود
-                    if (shippingMethod === 'flat_rate:9') { 
+                    if (shippingMethod === 'flat_rate:9') {
                         $('#delivery_checkout_field').show();
                     } else {
                         $('#delivery_checkout_field').hide();
@@ -2004,9 +2004,9 @@ add_action('wp_footer', 'my_custom_modal_hook');
 ## log requests
 # benchmark-php
 
-This is a PHP benchmark script to compare the runtime speed of PHP and MySQL. 
-This project is inspired by www.php-benchmark-script.com (Alessandro Torrisi) 
-an www.webdesign-informatik.de. In my point of view this script is more 
+This is a PHP benchmark script to compare the runtime speed of PHP and MySQL.
+This project is inspired by www.php-benchmark-script.com (Alessandro Torrisi)
+an www.webdesign-informatik.de. In my point of view this script is more
 correct and comparable for different servers.
 
 ## Screenshot
@@ -2054,7 +2054,7 @@ Author: Your Name
 
 */
 
-  
+
 
 function log_request() {
 
@@ -2062,19 +2062,19 @@ function log_request() {
 
 $log_file = WP_CONTENT_DIR . '/uploads/request_logs.txt';
 
-  
+
 
 // لینک فعلی را دریافت کنید
 
 $current_url = home_url( add_query_arg( null, null ) );
 
-  
+
 
 // اطلاعات درخواست را ذخیره کنید
 
 $log_entry = date( 'Y-m-d H:i:s' ) . " - " . $current_url . " - IP: " . $_SERVER['REMOTE_ADDR'] . "\n";
 
-  
+
 
 // نوشتن در فایل لاگ
 
@@ -2082,9 +2082,58 @@ file_put_contents( $log_file, $log_entry, FILE_APPEND );
 
 }
 
-  
+
 
 // اجرای تابع هنگام بارگذاری هر صفحه
 
 add_action( 'wp_head', 'log_request' );
+```
+---
+## simple-host-port-scanner
+```php
+<?php
+/**
+ * Simple multi hosts and ports scanner
+ *
+ * @author       Nabi KaramAliZadeh
+ * @website      www.Nabi.ir
+ * @email        nabikaz@gmail.com
+ * @package      simple-host-port-scanner
+ * @version      1.0.0
+ * @copyright    2023 Nabi K.A.Z. , All rights reserved.
+ * @license      GNU General Public License v3.0
+ */
+
+$hosts = [
+    '173.245.49.3',
+    '216.239.38.120',
+];
+$ports = [
+    80,
+    443,
+    22,
+];
+$timeout = 1;//sec
+
+$oks = [];
+foreach ($hosts as $host) {
+    echo 'Host: ' . $host . PHP_EOL;
+    foreach ($ports as $port) {
+        $connection = @fsockopen($host, $port, $errno, $errstr, $timeout);
+        echo '      ' . $host . ':' . $port . ' ... ';
+        if (is_resource($connection)) {
+             echo '*** OPEN ***' . PHP_EOL;
+            $oks[] = $host . ':' . $port;
+            fclose($connection);
+        } else {
+            echo 'CLOSED.' . PHP_EOL;
+        }
+    }
+}
+
+echo PHP_EOL . 'ALL OKs:' . PHP_EOL;
+foreach ($oks as $ok) {
+    echo $ok . PHP_EOL;
+}
+echo PHP_EOL;
 ```
